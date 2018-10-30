@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using sistema_academia.Data;
 
 namespace sistema_academia.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181030163432_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -190,10 +192,6 @@ namespace sistema_academia.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("dataCadastro")
-                        .HasColumnName("dataCadastro")
-                        .HasColumnType("datetime");
-
                     b.Property<string>("enderecoBairro")
                         .IsRequired()
                         .HasColumnName("enderecoBairro")
@@ -236,75 +234,6 @@ namespace sistema_academia.Data.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Aluno");
-                });
-
-            modelBuilder.Entity("sistema_academia.Models.ExercicioTreino", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("Treinoid");
-
-                    b.Property<DateTime>("dataCadastro")
-                        .HasColumnName("dataCadastro")
-                        .HasColumnType("datetime");
-
-                    b.Property<string>("nome")
-                        .IsRequired()
-                        .HasColumnName("nome")
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("observacao")
-                        .HasColumnName("observacao")
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<decimal>("peso")
-                        .HasColumnName("peso")
-                        .HasColumnType("decimal(3,2)");
-
-                    b.Property<decimal>("tempo")
-                        .HasColumnName("tempo")
-                        .HasColumnType("decimal(3,2)");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("Treinoid");
-
-                    b.ToTable("ExercicioTreino");
-                });
-
-            modelBuilder.Entity("sistema_academia.Models.Treino", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("Alunoid");
-
-                    b.Property<DateTime>("dataCadastro")
-                        .HasColumnName("dataCadastro")
-                        .HasColumnType("datetime");
-
-                    b.Property<string>("nome")
-                        .IsRequired()
-                        .HasColumnName("nome")
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("objetivo")
-                        .IsRequired()
-                        .HasColumnName("objetivo")
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("observacao")
-                        .HasColumnName("observacao")
-                        .HasColumnType("varchar(100)");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("Alunoid");
-
-                    b.ToTable("Treino");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -350,20 +279,6 @@ namespace sistema_academia.Data.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("sistema_academia.Models.ExercicioTreino", b =>
-                {
-                    b.HasOne("sistema_academia.Models.Treino", "Treino")
-                        .WithMany("ExerciciosTreinos")
-                        .HasForeignKey("Treinoid");
-                });
-
-            modelBuilder.Entity("sistema_academia.Models.Treino", b =>
-                {
-                    b.HasOne("sistema_academia.Models.Aluno", "Aluno")
-                        .WithMany("Treinos")
-                        .HasForeignKey("Alunoid");
                 });
 #pragma warning restore 612, 618
         }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using sistema_academia.Data;
 
 namespace sistema_academia.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181030165630_relacionamentoTreinoExercicio")]
+    partial class relacionamentoTreinoExercicio
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -190,10 +192,6 @@ namespace sistema_academia.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("dataCadastro")
-                        .HasColumnName("dataCadastro")
-                        .HasColumnType("datetime");
-
                     b.Property<string>("enderecoBairro")
                         .IsRequired()
                         .HasColumnName("enderecoBairro")
@@ -246,26 +244,20 @@ namespace sistema_academia.Data.Migrations
 
                     b.Property<int?>("Treinoid");
 
-                    b.Property<DateTime>("dataCadastro")
-                        .HasColumnName("dataCadastro")
-                        .HasColumnType("datetime");
-
                     b.Property<string>("nome")
                         .IsRequired()
                         .HasColumnName("nome")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("observacao")
-                        .HasColumnName("observacao")
+                    b.Property<string>("peso")
+                        .IsRequired()
+                        .HasColumnName("peso")
                         .HasColumnType("varchar(100)");
 
-                    b.Property<decimal>("peso")
-                        .HasColumnName("peso")
-                        .HasColumnType("decimal(3,2)");
-
-                    b.Property<decimal>("tempo")
+                    b.Property<string>("tempo")
+                        .IsRequired()
                         .HasColumnName("tempo")
-                        .HasColumnType("decimal(3,2)");
+                        .HasColumnType("varchar(100)");
 
                     b.HasKey("id");
 
@@ -282,10 +274,6 @@ namespace sistema_academia.Data.Migrations
 
                     b.Property<int?>("Alunoid");
 
-                    b.Property<DateTime>("dataCadastro")
-                        .HasColumnName("dataCadastro")
-                        .HasColumnType("datetime");
-
                     b.Property<string>("nome")
                         .IsRequired()
                         .HasColumnName("nome")
@@ -294,10 +282,6 @@ namespace sistema_academia.Data.Migrations
                     b.Property<string>("objetivo")
                         .IsRequired()
                         .HasColumnName("objetivo")
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("observacao")
-                        .HasColumnName("observacao")
                         .HasColumnType("varchar(100)");
 
                     b.HasKey("id");

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using sistema_academia.Models;
 
 namespace sistema_academia.Data
 {
@@ -12,5 +13,11 @@ namespace sistema_academia.Data
             : base(options)
         {
         }
+
+
+        public virtual DbSet<Aluno> Aluno{ get; set;}
+        public virtual DbSet<Treino> Treino{ get; set;}
+        public virtual DbSet<ExercicioTreino> ExercicioTreino{ get; set;}
+
     }
 }
