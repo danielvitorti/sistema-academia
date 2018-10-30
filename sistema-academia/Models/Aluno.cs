@@ -55,6 +55,11 @@ namespace sistema_academia.Models
 
         public virtual ICollection<Treino> Treinos { get; set; }
 
+        public virtual ICollection<PlanoAluno> PlanosAlunos { get; set; }
+
+
+        public virtual ICollection<PagamentoAluno> PagamentosAlunos { get; set; }
+
 
 
     }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using sistema_academia.Data;
 
 namespace sistema_academia.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181030172201_acrescimoPlanoAluno")]
+    partial class acrescimoPlanoAluno
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -274,39 +276,6 @@ namespace sistema_academia.Data.Migrations
                     b.ToTable("ExercicioTreino");
                 });
 
-            modelBuilder.Entity("sistema_academia.Models.PagamentoAluno", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("Alunoid");
-
-                    b.Property<int?>("Planoid");
-
-                    b.Property<string>("descricao")
-                        .IsRequired()
-                        .HasColumnName("descricao")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("tipoPagamento")
-                        .IsRequired()
-                        .HasColumnName("tipoPagamento")
-                        .HasColumnType("char(1)");
-
-                    b.Property<decimal>("valor")
-                        .HasColumnName("valor")
-                        .HasColumnType("decimal(4,2)");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("Alunoid");
-
-                    b.HasIndex("Planoid");
-
-                    b.ToTable("PagamentoAluno");
-                });
-
             modelBuilder.Entity("sistema_academia.Models.Plano", b =>
                 {
                     b.Property<int>("id")
@@ -443,17 +412,6 @@ namespace sistema_academia.Data.Migrations
                     b.HasOne("sistema_academia.Models.Treino", "Treino")
                         .WithMany("ExerciciosTreinos")
                         .HasForeignKey("Treinoid");
-                });
-
-            modelBuilder.Entity("sistema_academia.Models.PagamentoAluno", b =>
-                {
-                    b.HasOne("sistema_academia.Models.Aluno", "Aluno")
-                        .WithMany("PagamentosAlunos")
-                        .HasForeignKey("Alunoid");
-
-                    b.HasOne("sistema_academia.Models.Plano", "Plano")
-                        .WithMany("PagamentosAlunos")
-                        .HasForeignKey("Planoid");
                 });
 
             modelBuilder.Entity("sistema_academia.Models.PlanoAluno", b =>
