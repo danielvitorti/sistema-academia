@@ -1,0 +1,75 @@
+﻿@model sistema_academia.Models.Aluno
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<h4>Aluno</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id" />
+            <div class="form-group">
+                <label asp-for="nome" class="control-label"></label>
+                <input asp-for="nome" class="form-control" />
+                <span asp-validation-for="nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sexo" class="control-label"></label>
+                <input asp-for="sexo" class="form-control" />
+                <span asp-validation-for="sexo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="enderecoCep" class="control-label"></label>
+                <input asp-for="enderecoCep" class="form-control" />
+                <span asp-validation-for="enderecoCep" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="enderecoRua" class="control-label"></label>
+                <input asp-for="enderecoRua" class="form-control" />
+                <span asp-validation-for="enderecoRua" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="enderecoNumero" class="control-label"></label>
+                <input asp-for="enderecoNumero" class="form-control" />
+                <span asp-validation-for="enderecoNumero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="enderecoBairro" class="control-label"></label>
+                <input asp-for="enderecoBairro" class="form-control" />
+                <span asp-validation-for="enderecoBairro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="enderecoCidade" class="control-label"></label>
+                <input asp-for="enderecoCidade" class="form-control" />
+                <span asp-validation-for="enderecoCidade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="enderecoEstado" class="control-label"></label>
+                <input asp-for="enderecoEstado" class="form-control" />
+                <span asp-validation-for="enderecoEstado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dataCadastro" class="control-label"></label>
+                <input asp-for="dataCadastro" class="form-control" />
+                <span asp-validation-for="dataCadastro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

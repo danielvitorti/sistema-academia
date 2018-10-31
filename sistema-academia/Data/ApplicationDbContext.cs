@@ -18,10 +18,10 @@ namespace sistema_academia.Data
         public virtual DbSet<Aluno> Aluno{ get; set;}
         public virtual DbSet<Treino> Treino{ get; set;}
         public virtual DbSet<ExercicioTreino> ExercicioTreino{ get; set;}
-
         public virtual DbSet<Plano> Plano{ get; set;}
-
         public virtual DbSet<PlanoAluno> PlanoAluno{ get; set;}
+
+        public virtual DbSet<PresencaAluno> PresencaAluno{ get; set;}
 
     }
 }
