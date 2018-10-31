@@ -60,6 +60,8 @@ namespace sistema_academia.Models
 
         public virtual ICollection<PagamentoAluno> PagamentosAlunos { get; set; }
 
+        public virtual ICollection<PresencaAluno> PresencasAlunos { get; set; }
+
 
 
     }

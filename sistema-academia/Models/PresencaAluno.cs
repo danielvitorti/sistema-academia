@@ -8,22 +8,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace sistema_academia.Models
 {
-    public class PlanoAluno
+    public class PresencaAluno
     {
-        
+
+
         [Key]
         public int id { get; set; }
 
         public virtual Aluno Aluno { get; set; }
 
-        public virtual Plano Plano { get; set; }
+        [Column("dataPresenca", TypeName = "datetime")]
+        public DateTime dataPresenca {get; set;}
 
-
-        [Column("dataCadastro", TypeName = "datetime")]
-        public DateTime dataCadastro {get; set;}
-
-        
     }
-
 
 }
