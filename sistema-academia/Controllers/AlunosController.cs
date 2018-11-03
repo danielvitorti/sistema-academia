@@ -54,7 +54,7 @@ namespace sistema_academia.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,nome,sexo,enderecoCep,enderecoRua,enderecoNumero,enderecoBairro,enderecoCidade,enderecoEstado,dataCadastro")] Aluno aluno)
+        public async Task<IActionResult> Create([Bind("id,nome,sexo,enderecoCep,enderecoRua,enderecoNumero,enderecoBairro,enderecoCidade,enderecoEstado")] Aluno aluno)
         {
             if (ModelState.IsValid)
             {
@@ -148,6 +148,12 @@ namespace sistema_academia.Controllers
         private bool AlunoExists(int id)
         {
             return _context.Aluno.Any(e => e.id == id);
+        }
+
+
+        public ActionResult ListaAlunosJson(){
+
+            return Json(_context.Aluno.ToList());
         }
     }
 }

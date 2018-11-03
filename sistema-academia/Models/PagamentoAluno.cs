@@ -17,17 +17,20 @@ namespace sistema_academia.Models
 
 
         [Required]
+        [Display(Name = "Descrição")]
         [Column("descricao", TypeName = "varchar(255)")]
         public string descricao { get; set; }
 
 
         [Required]
         [Column("valor", TypeName = "decimal(4,2)")]
+        [Display(Name = "Valor")]
         public decimal valor { get; set; }
 
 
         [Required]
         [Column("tipoPagamento", TypeName = "char(1)")]
+        [Display(Name = "Tipo de pagamento")]
         public string tipoPagamento { get; set; }
 
 

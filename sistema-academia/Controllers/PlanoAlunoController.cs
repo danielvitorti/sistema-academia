@@ -10,22 +10,22 @@ using sistema_academia.Models;
 
 namespace sistema_academia.Controllers
 {
-    public class PlanoController : Controller
+    public class PlanoAlunoController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public PlanoController(ApplicationDbContext context)
+        public PlanoAlunoController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Plano
+        // GET: PlanoAluno
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Plano.ToListAsync());
+            return View(await _context.PlanoAluno.ToListAsync());
         }
 
-        // GET: Plano/Details/5
+        // GET: PlanoAluno/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace sistema_academia.Controllers
                 return NotFound();
             }
 
-            var plano = await _context.Plano
+            var planoAluno = await _context.PlanoAluno
                 .FirstOrDefaultAsync(m => m.id == id);
-            if (plano == null)
+            if (planoAluno == null)
             {
                 return NotFound();
             }
 
-            return View(plano);
+            return View(planoAluno);
         }
 
-        // GET: Plano/Create
+        // GET: PlanoAluno/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Plano/Create
+        // POST: PlanoAluno/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,nome,observacao,formaPagamento,valor")] Plano plano)
+        public async Task<IActionResult> Create([Bind("id,dataCadastro")] PlanoAluno planoAluno)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(plano);
+                _context.Add(planoAluno);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(plano);
+            return View(planoAluno);
         }
 
-        // GET: Plano/Edit/5
+        // GET: PlanoAluno/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace sistema_academia.Controllers
                 return NotFound();
             }
 
-            var plano = await _context.Plano.FindAsync(id);
-            if (plano == null)
+            var planoAluno = await _context.PlanoAluno.FindAsync(id);
+            if (planoAluno == null)
             {
                 return NotFound();
             }
-            return View(plano);
+            return View(planoAluno);
         }
 
-        // POST: Plano/Edit/5
+        // POST: PlanoAluno/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,nome,observacao,formaPagamento,valor,dataCadastro")] Plano plano)
+        public async Task<IActionResult> Edit(int id, [Bind("id,dataCadastro")] PlanoAluno planoAluno)
         {
-            if (id != plano.id)
+            if (id != planoAluno.id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace sistema_academia.Controllers
             {
                 try
                 {
-                    _context.Update(plano);
+                    _context.Update(planoAluno);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PlanoExists(plano.id))
+                    if (!PlanoAlunoExists(planoAluno.id))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace sistema_academia.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(plano);
+            return View(planoAluno);
         }
 
-        // GET: Plano/Delete/5
+        // GET: PlanoAluno/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,38 +124,30 @@ namespace sistema_academia.Controllers
                 return NotFound();
             }
 
-            var plano = await _context.Plano
+            var planoAluno = await _context.PlanoAluno
                 .FirstOrDefaultAsync(m => m.id == id);
-            if (plano == null)
+            if (planoAluno == null)
             {
                 return NotFound();
             }
 
-            return View(plano);
+            return View(planoAluno);
         }
 
-        // POST: Plano/Delete/5
+        // POST: PlanoAluno/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var plano = await _context.Plano.FindAsync(id);
-            _context.Plano.Remove(plano);
+            var planoAluno = await _context.PlanoAluno.FindAsync(id);
+            _context.PlanoAluno.Remove(planoAluno);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool PlanoExists(int id)
+        private bool PlanoAlunoExists(int id)
         {
-            return _context.Plano.Any(e => e.id == id);
+            return _context.PlanoAluno.Any(e => e.id == id);
         }
-
-
-        public ActionResult ListaPlanosJson() =>
-            
-            Json(_context.Plano.ToList());
-
-
-
     }
 }
