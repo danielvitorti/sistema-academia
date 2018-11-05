@@ -20,10 +20,26 @@ namespace sistema_academia.Controllers
         }
 
         // GET: Alunos
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string txtNomeAluno ="")
         {
-            return View(await _context.Aluno.ToListAsync());
+
+            if(txtNomeAluno !="")
+            {
+                //bool has = lstExcludeLibs.Any(cus => lstExcludeLibs.Contains(strSearch.ToUpper()));
+
+                //var alunos = _context.Aluno.ToListAsync().Contains(nomeAluno);
+
+                var alunos = await _context.Aluno.Where(a => a.nome.Contains(nomeAluno)).ToListAsync().ConfigureAwait(false);
+
+                return View(alunos);
+            }
+            else
+            {
+
+                return View(await _context.Aluno.ToListAsync());
+            }
         }
+
 
         // GET: Alunos/Details/5
         public async Task<IActionResult> Details(int? id)

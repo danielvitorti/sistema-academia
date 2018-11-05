@@ -55,6 +55,13 @@ namespace sistema_academia.Models
 
         
 
+        public Plano ()
+        {
+            this.dataCadastro =  System.DateTime.Now;
+        }
+
+        
+
 
     }
 

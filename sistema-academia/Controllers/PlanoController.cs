@@ -151,11 +151,22 @@ namespace sistema_academia.Controllers
         }
 
 
-        public ActionResult ListaPlanosJson() =>
+        public ActionResult ListaPlanosJson()
+        {
             
-            Json(_context.Plano.ToList());
 
+            Dictionary<string, string> listaNova = new Dictionary<string, string>();
 
+            foreach(var lista in _context.Plano.ToList())
+            {
+
+                listaNova.Add("value",lista.id.ToString());
+                listaNova.Add("label",lista.nome);
+
+            }
+            return Json(listaNova);
+
+        }
 
     }
 }
