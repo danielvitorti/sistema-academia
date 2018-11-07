@@ -56,7 +56,7 @@ namespace sistema_academia.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,dataCadastro")] PlanoAluno planoAluno)
+        public async Task<IActionResult> Create([Bind("id,plano,aluno,dataCadastro")] PlanoAluno planoAluno)
         {
             if (ModelState.IsValid)
             {

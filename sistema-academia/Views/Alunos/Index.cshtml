@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<sistema_academia.Models.Aluno>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Sistema de Controle de Academia - Alunos cadastrados";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Alunos</h2>
 
 <p>
     <a asp-action="Create">Cadastrar novo aluno</a>
@@ -94,9 +94,9 @@
                 @Html.DisplayFor(modelItem => item.dataCadastro)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.id">Alterar</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Excluir</a>
             </td>
         </tr>
 }

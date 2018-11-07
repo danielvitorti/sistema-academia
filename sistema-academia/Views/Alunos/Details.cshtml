@@ -1,11 +1,11 @@
 ﻿@model sistema_academia.Models.Aluno
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Sistema de Controle de Academia - Detalhes de alunos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Detalhes</h2>
 
 <div>
     <h4>Aluno</h4>
@@ -68,6 +68,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.id">Editar</a> |
+    <a asp-action="Index">Listagem</a>
 </div>
