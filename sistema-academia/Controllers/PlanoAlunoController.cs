@@ -46,6 +46,8 @@ namespace sistema_academia.Controllers
         // GET: PlanoAluno/Create
         public IActionResult Create()
         {
+            ViewBag.Planos =  _context.Plano.ToList();
+            ViewBag.Alunos = _context.Aluno.ToList();
             return View();
         }
 

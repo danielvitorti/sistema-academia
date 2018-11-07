@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -160,11 +161,16 @@ namespace sistema_academia.Controllers
             foreach(var lista in _context.Plano.ToList())
             {
 
-                listaNova.Add("value",lista.id.ToString());
-                listaNova.Add("label",lista.nome);
+                listaNova.Add("id",lista.id.ToString());
+                listaNova.Add("text",lista.nome);
 
             }
-            return Json(listaNova);
+
+            ArrayList arrayList = new ArrayList();
+            arrayList.Add(listaNova);
+
+            
+            return Json(arrayList);
 
         }
 

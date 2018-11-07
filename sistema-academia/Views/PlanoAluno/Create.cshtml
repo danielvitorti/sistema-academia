@@ -15,13 +15,25 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label for="plano" class="control-label">Plano</label>
-                <input name="plano" id="plano" class="form-control" />
+                <select name="plano" id="plano" class="form-control" required>
+                    <option value="">Selecione...</option>
+                    @foreach (var item in ViewBag.Planos)
+                    {
+                        <option value="@item.id">@item.nome</option>
+                    }
+                </select>
                 
             </div>
             
             <div class="form-group">
                 <label for="aluno" class="control-label">Aluno</label>
-                <input name="aluno" class="form-control" />
+                <select name="aluno" id="aluno" class="form-control" required>
+                    <option value="">Selecione...</option>
+                    @foreach (var item in ViewBag.Alunos)
+                    {
+                        <option value="@item.id">@item.nome</option>
+                    }
+                </select>
                 
             </div>
             <div class="form-group">

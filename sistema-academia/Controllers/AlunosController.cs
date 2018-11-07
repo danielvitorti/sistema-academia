@@ -29,7 +29,7 @@ namespace sistema_academia.Controllers
 
                 //var alunos = _context.Aluno.ToListAsync().Contains(nomeAluno);
 
-                var alunos = await _context.Aluno.Where(a => a.nome.Contains(nomeAluno)).ToListAsync().ConfigureAwait(false);
+                var alunos = await _context.Aluno.Where(a => a.nome.Contains(txtNomeAluno)).ToListAsync().ConfigureAwait(false);
 
                 return View(alunos);
             }
