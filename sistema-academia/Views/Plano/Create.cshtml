@@ -6,43 +6,49 @@
 }
 
 <h2></h2>
-
-<h4>Cadastrar plano</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="nome" class="control-label"></label>
-                <input asp-for="nome" class="form-control" />
-                <span asp-validation-for="nome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="observacao" class="control-label"></label>
-                <input asp-for="observacao" class="form-control" />
-                <span asp-validation-for="observacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="formaPagamento" class="control-label"></label>
-                <input asp-for="formaPagamento" class="form-control" />
-                <span asp-validation-for="formaPagamento" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="valor" class="control-label"></label>
-                <input asp-for="valor" class="form-control" />
-                <span asp-validation-for="valor" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <input type="submit" value="Cadastrar" class="btn btn-default" />
-            </div>
-        </form>
+<div class="content-wrapper">
+  <section class="content-header">
+    <h4>Cadastrar plano</h4>
+    <hr />
+</section>
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="nome" class="control-label"></label>
+                    <input asp-for="nome" class="form-control" />
+                    <span asp-validation-for="nome" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="observacao" class="control-label"></label>
+                    <input asp-for="observacao" class="form-control" />
+                    <span asp-validation-for="observacao" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="formaPagamento" class="control-label"></label>
+                    <input asp-for="formaPagamento" class="form-control" />
+                    <span asp-validation-for="formaPagamento" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="valor" class="control-label"></label>
+                    <input asp-for="valor" class="form-control" />
+                    <span asp-validation-for="valor" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <input type="submit" value="Cadastrar" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
+</section>
 
-<div>
-    <a asp-action="Index">Listagem</a>
+    <div>
+        <a asp-action="Index">Listagem</a>
+    </div>
+
 </div>
 
 @section Scripts {

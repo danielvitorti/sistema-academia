@@ -4,13 +4,13 @@
     ViewData["Title"] = "Sistema de Controle de Academia - Alunos cadastrados";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<section class="content-header">
+    <h3>Alunos</h3>
 
-<h2>Alunos</h2>
+</section>
 
-<p>
-    <a asp-action="Create">Cadastrar novo aluno</a>
-</p>
-
+<section class="content container-fluid">
+    <!--
 <form name="buscaAluno" id="buscaAluno" method="get" action="">
 
     <div class="row">
@@ -26,7 +26,135 @@
     </div>
     </div>
 </form>
-<div class="container">
+
+-->
+
+<div class="row">
+    <div class="col-lg-12 col-xs-12 col-md-12 col-sm-12">
+        
+          <!-- Horizontal Form -->
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Pesquisar</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form class="form-horizontal">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Nome</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" name="txtNomeAluno" class="form-control" />
+                  </div>
+                </div>
+               
+               
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <a asp-action="Create" class="btn btn-default">Cadastrar novo aluno</a>
+                <input type="submit" class="btn btn-info pull-right" name="btnBuscar" id="btnBuscar" value="Buscar" />
+              </div>
+              <!-- /.box-footer -->
+            </form>
+          
+          <!-- /.box -->
+    </div>
+</div>
+<section class="content">
+ <div class="row">
+        <div class="col-lg-12 col-xs-12 col-md-12 col-sm-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Alunos cadastrados</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table class="table table-bordered">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.sexo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.enderecoCep)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.enderecoRua)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.enderecoNumero)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.enderecoBairro)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.enderecoCidade)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.enderecoEstado)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.dataCadastro)
+                    </th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sexo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.enderecoCep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.enderecoRua)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.enderecoNumero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.enderecoBairro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.enderecoCidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.enderecoEstado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dataCadastro)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Alterar</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Excluir</a>
+            </td>
+        </tr>
+}
+              </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+              <ul class="pagination pagination-sm no-margin pull-right">
+                <li><a href="#">&laquo;</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">&raquo;</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- /.box -->
+   </div>        
+</section>
+<!--
 <div class="row">
 
 <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
@@ -103,5 +231,7 @@
     </tbody>
 </table>
 </div>
+
 </div>
-</div>
+-->
+</section>
