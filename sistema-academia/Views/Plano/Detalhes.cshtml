@@ -1,13 +1,12 @@
 ﻿@model sistema_academia.Models.Plano
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<h2>Detalhes</h2>
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>Plano</h4>
     <hr />
@@ -43,10 +42,8 @@
             @Html.DisplayFor(model => model.dataCadastro)
         </dd>
     </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="id" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+</div>
+<div>
+    <a asp-action="Editar" asp-route-id="@Model.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
 </div>

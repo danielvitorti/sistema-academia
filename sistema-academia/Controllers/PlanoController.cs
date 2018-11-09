@@ -38,7 +38,7 @@ namespace sistema_academia.Controllers
         }
 
         // GET: Plano/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Detalhes(int? id)
         {
             if (id == null)
             {
@@ -56,7 +56,7 @@ namespace sistema_academia.Controllers
         }
 
         // GET: Plano/Create
-        public IActionResult Create()
+        public IActionResult Cadastrar()
         {
             return View();
         }
@@ -66,7 +66,7 @@ namespace sistema_academia.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,nome,observacao,formaPagamento,valor")] Plano plano)
+        public async Task<IActionResult> Cadastrar([Bind("id,nome,observacao,formaPagamento,valor")] Plano plano)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace sistema_academia.Controllers
         }
 
         // GET: Plano/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Editar(int? id)
         {
             if (id == null)
             {
@@ -98,7 +98,7 @@ namespace sistema_academia.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,nome,observacao,formaPagamento,valor,dataCadastro")] Plano plano)
+        public async Task<IActionResult> Editar(int id, [Bind("id,nome,observacao,formaPagamento,valor,dataCadastro")] Plano plano)
         {
             if (id != plano.id)
             {
@@ -129,7 +129,7 @@ namespace sistema_academia.Controllers
         }
 
         // GET: Plano/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Excluir(int? id)
         {
             if (id == null)
             {
@@ -149,7 +149,7 @@ namespace sistema_academia.Controllers
         // POST: Plano/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> ExcluirConfirmed(int id)
         {
             var plano = await _context.Plano.FindAsync(id);
             _context.Plano.Remove(plano);

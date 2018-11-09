@@ -115,9 +115,9 @@
                 @Html.DisplayFor(modelItem => item.dataCadastro)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.id"><i class="fa fa-files-o"></i></a> |
-                <a asp-action="Details" asp-route-id="@item.id"><i class="fa fa-list-alt"></i></a> |
-                <a asp-action="Delete" asp-route-id="@item.id"><i class="fa fa-remove"></i></a>
+                <a asp-action="Editar" asp-route-id="@item.id"><i class="fa fa-files-o"></i></a> |
+                <a asp-action="Detalhes" asp-route-id="@item.id"><i class="fa fa-list-alt"></i></a> |
+                <a asp-action="Excluir" asp-route-id="@item.id"><i class="fa fa-remove"></i></a>
             </td>
         </tr>
 }
@@ -137,84 +137,5 @@
           <!-- /.box -->
    </div>        
 </section>
-<!--
-<div class="row">
 
-<div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
-<table class="table table-striped table-responsive">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.sexo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.enderecoCep)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.enderecoRua)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.enderecoNumero)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.enderecoBairro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.enderecoCidade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.enderecoEstado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.dataCadastro)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.sexo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.enderecoCep)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.enderecoRua)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.enderecoNumero)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.enderecoBairro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.enderecoCidade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.enderecoEstado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.dataCadastro)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Alterar</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Excluir</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-</div>
-
-</div>
--->
 </section>

@@ -39,7 +39,7 @@ namespace sistema_academia.Controllers
 
 
         // GET: Alunos/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Detalhes(int? id)
         {
             if (id == null)
             {
@@ -57,7 +57,7 @@ namespace sistema_academia.Controllers
         }
 
         // GET: Alunos/Create
-        public IActionResult Create()
+        public IActionResult Cadastrar()
         {
             return View();
         }
@@ -67,7 +67,7 @@ namespace sistema_academia.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,nome,sexo,enderecoCep,enderecoRua,enderecoNumero,enderecoBairro,enderecoCidade,enderecoEstado")] Aluno aluno)
+        public async Task<IActionResult> Cadastrar([Bind("id,nome,sexo,enderecoCep,enderecoRua,enderecoNumero,enderecoBairro,enderecoCidade,enderecoEstado")] Aluno aluno)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace sistema_academia.Controllers
         }
 
         // GET: Alunos/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Editar(int? id)
         {
             if (id == null)
             {
@@ -99,7 +99,7 @@ namespace sistema_academia.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,nome,sexo,enderecoCep,enderecoRua,enderecoNumero,enderecoBairro,enderecoCidade,enderecoEstado,dataCadastro")] Aluno aluno)
+        public async Task<IActionResult> Editar(int id, [Bind("id,nome,sexo,enderecoCep,enderecoRua,enderecoNumero,enderecoBairro,enderecoCidade,enderecoEstado,dataCadastro")] Aluno aluno)
         {
             if (id != aluno.id)
             {
@@ -130,7 +130,7 @@ namespace sistema_academia.Controllers
         }
 
         // GET: Alunos/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Excluir(int? id)
         {
             if (id == null)
             {
@@ -150,7 +150,7 @@ namespace sistema_academia.Controllers
         // POST: Alunos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> ExcluirConfirmed(int id)
         {
             var aluno = await _context.Aluno.FindAsync(id);
             _context.Aluno.Remove(aluno);
