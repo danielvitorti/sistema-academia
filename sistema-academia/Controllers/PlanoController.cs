@@ -21,9 +21,20 @@ namespace sistema_academia.Controllers
         }
 
         // GET: Plano
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string txtNomePlano = "")
         {
-            return View(await _context.Plano.ToListAsync());
+             if(txtNomePlano !="")
+            {
+            
+                var planos = await _context.Plano.Where(a => a.nome.Contains(txtNomePlano)).ToListAsync().ConfigureAwait(false);
+
+                return View(planos);
+            }
+            else
+            {
+
+                return View(await _context.Plano.ToListAsync());
+            }
         }
 
         // GET: Plano/Details/5

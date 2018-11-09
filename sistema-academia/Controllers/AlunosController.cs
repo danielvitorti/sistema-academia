@@ -25,10 +25,7 @@ namespace sistema_academia.Controllers
 
             if(txtNomeAluno !="")
             {
-                //bool has = lstExcludeLibs.Any(cus => lstExcludeLibs.Contains(strSearch.ToUpper()));
-
-                //var alunos = _context.Aluno.ToListAsync().Contains(nomeAluno);
-
+            
                 var alunos = await _context.Aluno.Where(a => a.nome.Contains(txtNomeAluno)).ToListAsync().ConfigureAwait(false);
 
                 return View(alunos);
