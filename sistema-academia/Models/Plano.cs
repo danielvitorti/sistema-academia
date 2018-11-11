@@ -20,7 +20,7 @@ namespace sistema_academia.Models
         [Display(Name = "Nome")]
         public string nome { get; set; }
 
-        [Required]
+        
         [Column("observacao", TypeName = "varchar(100)")]
         [Display(Name = "Observação")]
         public string observacao { get; set; }
@@ -35,7 +35,7 @@ namespace sistema_academia.Models
 
         
         [Required]
-        [Column("valor", TypeName = "decimal(4,2)")]
+        [Column("valor", TypeName = "decimal(10,4)")]
         [Display(Name = "Valor")]
         public decimal valor { get; set; }
 

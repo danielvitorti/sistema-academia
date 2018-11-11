@@ -61,6 +61,12 @@ namespace sistema_academia.Models
         public DateTime dataCadastro {get; set;}
 
 
+        [Required]
+        [Column("situacaoAluno", TypeName = "varchar(1)")]
+        [Display(Name = "Situação")]
+        public string situacaoAluno{ get; set;}
+
+
         public Aluno()
         {
             this.dataCadastro = System.DateTime.Now;

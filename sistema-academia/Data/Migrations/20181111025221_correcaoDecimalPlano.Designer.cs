@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using sistema_academia.Data;
 
 namespace sistema_academia.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181111025221_correcaoDecimalPlano")]
+    partial class correcaoDecimalPlano
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -232,11 +234,6 @@ namespace sistema_academia.Data.Migrations
                         .IsRequired()
                         .HasColumnName("sexo")
                         .HasColumnType("char(1)");
-
-                    b.Property<string>("situacaoAluno")
-                        .IsRequired()
-                        .HasColumnName("situacaoAluno")
-                        .HasColumnType("varchar(1)");
 
                     b.HasKey("id");
 
