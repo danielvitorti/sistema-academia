@@ -31,7 +31,7 @@
                   <label for="inputEmail3" class="col-sm-2 control-label">Nome</label>
 
                   <div class="col-sm-10">
-                    <input type="text" name="txtNomePlano" id="txtNomePlano" class="form-control" />
+                    <input type="text" name="filtro" id="filtro" class="form-control" />
                   </div>
                 </div>
                
@@ -41,7 +41,7 @@
               <div class="box-footer">
                 <a asp-action="Cadastrar" class="btn btn-default"><i class="fa fa-edit"></i>Cadastrar novo plano</a>
                 <button type="submit" class="btn btn-info pull-right" name="btnBuscar" id="btnBuscar" value="Buscar"><i class="fa fa-search"></i>Buscar</button>
-
+                <a asp-action="Index" class="btn btn-default pull-right"><i class="fa fa-refresh"></i>Limpar</a>
               </div>
               <!-- /.box-footer -->
             </form>
@@ -63,12 +63,12 @@
     <thead>
         <tr>
             <th >
-                <a asp-action="index" asp-route-ordem="@ViewData["NomeParm"]" asp-route-filtroAtual="@ViewData["filtroAtual"]">
+                <a asp-action="index" asp-route-ordem="@ViewData["IdParam"]" asp-route-filtroAtual="@ViewData["filtroAtual"]">
                     Código
                 </a>
             </th>
             <th >
-                <a asp-route-ordem="@ViewData["NomeParm"]" asp-route-filtroAtual="@ViewData["filtroAtual"]">
+                <a asp-route-ordem="@ViewData["NomeParam"]" asp-route-filtroAtual="@ViewData["filtroAtual"]">
                     Nome
                 </a>
             </th>

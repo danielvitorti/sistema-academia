@@ -27,8 +27,8 @@ namespace sistema_academia.Controllers
             int? pagina)
         {
 
-            ViewData["NomeParm"] = String.IsNullOrEmpty(ordem) ? "nome_desc" : "";
-            ViewData["IdParm"] = ordem == "Id" ? "id_desc" : "Id";
+            ViewData["NomeParam"] = String.IsNullOrEmpty(ordem) ? "nome_desc" : "";
+            ViewData["IdParam"] = ordem == "Id" ? "id_desc" : "Id";
             ViewData["filtro"] = filtro;
 
         
