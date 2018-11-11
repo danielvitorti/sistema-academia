@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<sistema_academia.Models.Aluno>
 
 @{
-    ViewData["Title"] = "Sistema de Controle de Academia - Alunos cadastrados";
+    ViewData["Title"] = "SysAcad - Alunos cadastrados";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <section class="content-header">
@@ -27,7 +27,7 @@
                   <label for="inputEmail3" class="col-sm-2 control-label">Nome</label>
 
                   <div class="col-sm-10">
-                    <input type="text" name="txtNomeAluno" class="form-control" />
+                    <input type="text" name="filtro" class="form-control" />
                   </div>
                 </div>
                
@@ -57,32 +57,17 @@
               <table class="table table-striped">
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.nome)
+                        Nome
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.sexo)
-                    </th>
+                        Situação
+                    </th>       
                     <th>
-                        @Html.DisplayNameFor(model => model.enderecoCep)
-                    </th>
+                        Dia de vencimento    
+                    </th>      
                     <th>
-                        @Html.DisplayNameFor(model => model.enderecoRua)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.enderecoNumero)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.enderecoBairro)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.enderecoCidade)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.enderecoEstado)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.dataCadastro)
-                    </th>
+                        Data de cadastro
+                    </th>       
                     <th></th>
                 </tr>
                 @foreach (var item in Model) {
@@ -91,25 +76,10 @@
                 @Html.DisplayFor(modelItem => item.nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.sexo)
+                @Html.DisplayFor(modelItem => item.situacaoAluno)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.enderecoCep)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.enderecoRua)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.enderecoNumero)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.enderecoBairro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.enderecoCidade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.enderecoEstado)
+                @Html.DisplayFor(modelItem => item.diaVencimento)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.dataCadastro)
@@ -125,6 +95,22 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
+
+                 <a asp-action="Index"
+                    asp-route-ordem="@ViewData["ordemAtual"]"
+                    asp-route-pagina="@(Model.PageIndex - 1)"
+                    asp-route-filtroAtual="@ViewData["filtroAtual"]"
+                    class="btn btn-default @prevDisabled">
+                        <<
+                </a>
+                <a asp-action="Index"
+                asp-route-ordem="@ViewData["ordemAtual"]"
+                asp-route-pagina="@(Model.PageIndex + 1)"
+                asp-route-filtroAtual="@ViewData["filtroAtual"]"
+                class="btn btn-default @nextDisabled">
+                    >>
+                </a>
+                <!--
               <ul class="pagination pagination-sm no-margin pull-right">
                 <li><a href="#">&laquo;</a></li>
                 <li><a href="#">1</a></li>
@@ -132,6 +118,7 @@
                 <li><a href="#">3</a></li>
                 <li><a href="#">&raquo;</a></li>
               </ul>
+              -->
             </div>
           </div>
           <!-- /.box -->

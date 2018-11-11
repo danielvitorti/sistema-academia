@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using sistema_academia.Data;
 using sistema_academia.Models;
+using sistema_academia;
 
 namespace sistema_academia.Controllers
 {
@@ -20,21 +21,49 @@ namespace sistema_academia.Controllers
         }
 
         // GET: Alunos
-        public async Task<IActionResult> Index(string txtNomeAluno ="")
+        public async Task<IActionResult> Index(string ordem, 
+            string filtroAtual,
+            string filtro, 
+            int? pagina)
         {
-
-            if(txtNomeAluno !="")
-            {
             
-                var alunos = await _context.Aluno.Where(a => a.nome.Contains(txtNomeAluno)).ToListAsync().ConfigureAwait(false);
 
-                return View(alunos);
-            }
-            else
+            ViewData["NomeParam"] = String.IsNullOrEmpty(ordem) ? "nome_desc" : "";
+            ViewData["IdParam"] = ordem == "Id" ? "id_desc" : "Id";
+            ViewData["filtro"] = filtro;
+
+        
+        
+            var alunos = from aln in _context.Aluno
+                         select aln;
+
+            if (!String.IsNullOrEmpty(filtro))
             {
-
-                return View(await _context.Aluno.ToListAsync());
+                alunos = alunos.Where(s => s.nome.Contains(filtro));
+                                       
             }
+
+
+            switch (ordem)
+            {
+                case "nome_desc":
+                    alunos = alunos.OrderByDescending(aln => aln.nome);
+                    break;
+                case "Id":
+                    alunos = alunos.OrderBy(aln => aln.id);
+                    break;
+                case "id_desc":
+                    alunos = alunos.OrderByDescending(aln => aln.id);
+                    break;
+                default:
+                    alunos = alunos.OrderBy(aln => aln.nome);
+                    break;
+            }
+
+        
+                int pageSize = 10;
+                return View(await PaginatedList<Aluno>.CreateAsync(alunos.AsNoTracking(), pagina ?? 1, pageSize));
+        
         }
 
 
