@@ -23,7 +23,7 @@ namespace sistema_academia.Models
 
 
         [Required]
-        [Column("valor", TypeName = "decimal(4,2)")]
+        [Column("valor", TypeName = "decimal(10,4)")]
         [Display(Name = "Valor")]
         public decimal valor { get; set; }
 

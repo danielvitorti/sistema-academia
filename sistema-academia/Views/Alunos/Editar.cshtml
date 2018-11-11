@@ -70,6 +70,20 @@
                 </select>
                 <span asp-validation-for="enderecoEstado" class="text-danger"></span>
             </div>
+
+            <div class="col-lg-2">
+            <div class="form-group">
+                    <label asp-for="diaVencimento" class="control-label"></label>
+                    <!-- <input asp-for="enderecoEstado" class="form-control" /> -->
+                    <select asp-for="diaVencimento" class="form-control">
+                        <option value="">Selecione</option>
+                        <option value="1">5</option>
+                        <option value="2">10</option>
+                        <option value="3">20</option>
+
+                    </select>
+                    <span asp-validation-for="diaVencimento" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Salvar" class="btn btn-default" />
             </div>

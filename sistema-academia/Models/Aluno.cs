@@ -67,6 +67,12 @@ namespace sistema_academia.Models
         public string situacaoAluno{ get; set;}
 
 
+        [Required]
+        [Column("diaVencimento", TypeName = "varchar(1)")]
+        [Display(Name = "Dia de vencimento")]
+        public string diaVencimento{get; set;}
+
+
         public Aluno()
         {
             this.dataCadastro = System.DateTime.Now;

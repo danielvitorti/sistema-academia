@@ -58,7 +58,7 @@
                     <span asp-validation-for="enderecoNumero" class="text-danger"></span>
                 </div>
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-3">
                 <div class="form-group">
                     <label asp-for="enderecoBairro" class="control-label"></label>
                     <input asp-for="enderecoBairro" class="form-control" />
@@ -120,7 +120,22 @@
                         <option value="0">Inativo</option>
 
                     </select>
-                    <span asp-validation-for="enderecoEstado" class="text-danger"></span>
+                    <span asp-validation-for="situacaoAluno" class="text-danger"></span>
+            </div>
+            </div>
+
+            <div class="col-lg-2">
+            <div class="form-group">
+                    <label asp-for="diaVencimento" class="control-label"></label>
+                    <!-- <input asp-for="enderecoEstado" class="form-control" /> -->
+                    <select asp-for="diaVencimento" class="form-control">
+                        <option value="">Selecione</option>
+                        <option value="1">5</option>
+                        <option value="2">10</option>
+                        <option value="3">20</option>
+
+                    </select>
+                    <span asp-validation-for="diaVencimento" class="text-danger"></span>
             </div>
             </div>
 
