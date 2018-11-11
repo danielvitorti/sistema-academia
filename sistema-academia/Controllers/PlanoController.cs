@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using sistema_academia.Data;
 using sistema_academia.Models;
-
+using sistema_academia;
 namespace sistema_academia.Controllers
 {
     public class PlanoController : Controller
@@ -21,20 +21,49 @@ namespace sistema_academia.Controllers
         }
 
         // GET: Plano
-        public async Task<IActionResult> Index(string txtNomePlano = "")
+        public async Task<IActionResult> Index(string ordem, 
+            string filtroAtual,
+            string filtro, 
+            int? pagina)
         {
-             if(txtNomePlano !="")
+
+            ViewData["NomeParm"] = String.IsNullOrEmpty(ordem) ? "nome_desc" : "";
+            ViewData["IdParm"] = ordem == "Id" ? "id_desc" : "Id";
+            ViewData["filtro"] = filtro;
+
+        
+        
+            var planos = from pln in _context.Plano
+                         select pln;
+
+            if (!String.IsNullOrEmpty(filtro))
             {
+                planos = planos.Where(s => s.nome.Contains(filtro)
+                                       || s.observacao.Contains(filtro));
+            }
+
+
+            switch (ordem)
+            {
+                case "nome_desc":
+                    planos = planos.OrderByDescending(pln => pln.nome);
+                    break;
+                case "Id":
+                    planos = planos.OrderBy(pln => pln.id);
+                    break;
+                case "id_desc":
+                    planos = planos.OrderByDescending(pln => pln.id);
+                    break;
+                default:
+                    planos = planos.OrderBy(pln => pln.nome);
+                    break;
+            }
+
+        
+                int pageSize = 10;
+                return View(await PaginatedList<Plano>.CreateAsync(planos.AsNoTracking(), pagina ?? 1, pageSize));
+        
             
-                var planos = await _context.Plano.Where(a => a.nome.Contains(txtNomePlano)).ToListAsync().ConfigureAwait(false);
-
-                return View(planos);
-            }
-            else
-            {
-
-                return View(await _context.Plano.ToListAsync());
-            }
         }
 
         // GET: Plano/Details/5

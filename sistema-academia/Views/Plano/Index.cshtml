@@ -1,7 +1,9 @@
-﻿@model IEnumerable<sistema_academia.Models.Plano>
+﻿  
+@model PaginatedList<sistema_academia.Models.Plano>
+
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "SysAcad - Planos ";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -60,20 +62,31 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.nome)
+            <th >
+                <a asp-action="index" asp-route-ordem="@ViewData["NomeParm"]" asp-route-filtroAtual="@ViewData["filtroAtual"]">
+                    Código
+                </a>
+            </th>
+            <th >
+                <a asp-route-ordem="@ViewData["NomeParm"]" asp-route-filtroAtual="@ViewData["filtroAtual"]">
+                    Nome
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.observacao)
+                
+                Observação
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.formaPagamento)
+                
+                Forma de pagamento
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.valor)
+                
+                Valor
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.dataCadastro)
+                
+                Data de cadastro
             </th>
             <th></th>
         </tr>
@@ -81,6 +94,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.nome)
             </td>
@@ -106,6 +122,32 @@
 }
     </tbody>
 </table>
+
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+
+}
+
+<div class="row">
+
+    <a asp-action="Index"
+        asp-route-ordem="@ViewData["ordemAtual"]"
+        asp-route-pagina="@(Model.PageIndex - 1)"
+        asp-route-filtroAtual="@ViewData["filtroAtual"]"
+        class="btn btn-default @prevDisabled">
+            <<
+    </a>
+    <a asp-action="Index"
+    asp-route-ordem="@ViewData["ordemAtual"]"
+    asp-route-pagina="@(Model.PageIndex + 1)"
+    asp-route-filtroAtual="@ViewData["filtroAtual"]"
+    class="btn btn-default @nextDisabled">
+        >>
+    </a>
+</div>
+
             </div>
             </div>
             </div>
