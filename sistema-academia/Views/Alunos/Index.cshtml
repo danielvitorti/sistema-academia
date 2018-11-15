@@ -1,4 +1,4 @@
-﻿@model IEnumerable<sistema_academia.Models.Aluno>
+﻿@model PaginatedList<sistema_academia.Models.Aluno>
 
 @{
     ViewData["Title"] = "SysAcad - Alunos cadastrados";
@@ -90,6 +90,14 @@
                 <a asp-action="Excluir" asp-route-id="@item.id"><i class="fa fa-remove"></i></a>
             </td>
         </tr>
+}
+
+
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+
 }
               </table>
             </div>

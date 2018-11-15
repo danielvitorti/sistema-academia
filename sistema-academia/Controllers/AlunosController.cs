@@ -96,7 +96,7 @@ namespace sistema_academia.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Cadastrar([Bind("id,nome,sexo,enderecoCep,enderecoRua,enderecoNumero,enderecoBairro,enderecoCidade,enderecoEstado,situacaoAluno")] Aluno aluno)
+        public async Task<IActionResult> Cadastrar([Bind("id,nome,sexo,enderecoCep,enderecoRua,enderecoNumero,enderecoBairro,enderecoCidade,enderecoEstado,situacaoAluno,diaVencimento")] Aluno aluno)
         {
             if (ModelState.IsValid)
             {
