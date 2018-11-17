@@ -82,6 +82,15 @@ namespace sistema_academia.Controllers
                 return NotFound();
             }
 
+            if(aluno.sexo.Equals('1'))
+            {
+                ViewData["sexo"] = "Masculino";
+            }
+            else if(aluno.sexo.Equals("2"))
+            {
+                ViewData["sexo"] = "Feminino";
+            }
+
             return View(aluno);
         }
 
@@ -172,6 +181,16 @@ namespace sistema_academia.Controllers
             {
                 return NotFound();
             }
+
+            if(aluno.sexo.Equals('1'))
+            {
+                ViewData["sexo"] = "Masculino";
+            }
+            else if(aluno.sexo.Equals("2"))
+            {
+                ViewData["sexo"] = "Feminino";
+            }
+
 
             return View(aluno);
         }

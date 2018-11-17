@@ -21,10 +21,22 @@ namespace sistema_academia.Controllers
         }
 
 
-        public async Task<IActionResult> Index(string txtNomeAluno ="")
+        public async Task<IActionResult> Index()
         {
-
+            /*
+                var count = context.MyContainer
+            .Where(o => o.ID == '1')
+            .SelectMany(o => o.MyTable)
+            .Count()
+             */
             //return View(await _context.Aluno.ToListAsync());
+
+            var countAlunos = _context.Aluno.Count();
+            ViewData["countAlunos"] = countAlunos;
+
+
+            var countAlunosAtivos = _context.Aluno.Count(a => a.situacaoAluno.Equals("1"));
+            ViewData["countAlunosAtivos"] = countAlunosAtivos;
             return View();
         
         }

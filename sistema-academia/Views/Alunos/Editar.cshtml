@@ -5,70 +5,121 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Editar</h2>
-
-<h4>Aluno</h4>
-<hr />
+<section class="content">
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12 col-xs-12 col-lg-12 col-md-12">
+        <div class="box box-primary">
+            <div class="box-header  with-border">
+                <h3 class="box-title">Cadastrar aluno</h3>
+            </div>
         <form asp-action="Editar">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="id" />
+            <div class="col-lg-10">
             <div class="form-group">
                 <label asp-for="nome" class="control-label"></label>
                 <input asp-for="nome" class="form-control" />
                 <span asp-validation-for="nome" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="sexo" class="control-label"></label>
-                <input asp-for="sexo" class="form-control" />
-                <span asp-validation-for="sexo" class="text-danger"></span>
             </div>
+            <div class="col-lg-2">
+                <div class="form-group">
+                    <label asp-for="sexo" class="control-label"></label>
+                    
+                    <select asp-for="sexo" class="form-control">
+                        <option value="">Selecione</option>
+                        <option value="1">Masculino</option>
+                        <option value="2">Feminino</option>
+
+                    </select>
+                
+                    <span asp-validation-for="sexo" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-lg-3">
             <div class="form-group">
                 <label asp-for="enderecoCep" class="control-label"></label>
                 <input asp-for="enderecoCep" class="form-control" />
                 <span asp-validation-for="enderecoCep" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="enderecoRua" class="control-label"></label>
-                <input asp-for="enderecoRua" class="form-control" />
-                <span asp-validation-for="enderecoRua" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="enderecoNumero" class="control-label"></label>
-                <input asp-for="enderecoNumero" class="form-control" />
-                <span asp-validation-for="enderecoNumero" class="text-danger"></span>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="enderecoRua" class="control-label"></label>
+                    <input asp-for="enderecoRua" class="form-control" />
+                    <span asp-validation-for="enderecoRua" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="enderecoBairro" class="control-label"></label>
-                <input asp-for="enderecoBairro" class="form-control" />
-                <span asp-validation-for="enderecoBairro" class="text-danger"></span>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label asp-for="enderecoNumero" class="control-label"></label>
+                    <input asp-for="enderecoNumero" class="form-control" />
+                    <span asp-validation-for="enderecoNumero" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="enderecoCidade" class="control-label"></label>
-                <input asp-for="enderecoCidade" class="form-control" />
-                <span asp-validation-for="enderecoCidade" class="text-danger"></span>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label asp-for="enderecoBairro" class="control-label"></label>
+                    <input asp-for="enderecoBairro" class="form-control" />
+                    <span asp-validation-for="enderecoBairro" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="enderecoEstado" class="control-label"></label>
-                <input asp-for="enderecoEstado" class="form-control" />
-                <span asp-validation-for="enderecoEstado" class="text-danger"></span>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label asp-for="enderecoCidade" class="control-label"></label>
+                    <input asp-for="enderecoCidade" class="form-control" />
+                    <span asp-validation-for="enderecoCidade" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="dataCadastro" class="control-label"></label>
-                <input asp-for="dataCadastro" class="form-control" />
-                <span asp-validation-for="dataCadastro" class="text-danger"></span>
+            <div class="col-lg-2">
+                <div class="form-group">
+                    <label asp-for="enderecoEstado" class="control-label"></label>
+                    
+                    <select asp-for="enderecoEstado" class="form-control">
+                        <option value="">Selecione</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    
+                    </select>
+                    <span asp-validation-for="enderecoEstado" class="text-danger"></span>
+                </div>
             </div>
+           <div class="col-lg-2">
             <div class="form-group">
-                <label asp-for="situacaoAluno" class="control-label"></label>
-                <!-- <input asp-for="enderecoEstado" class="form-control" /> -->
-                <select asp-for="situacaoAluno" class="form-control">
-                    <option value="">Selecione</option>
-                    <option value="1">Ativo</option>
-                    <option value="0">Inativo</option>
+                    <label asp-for="situacaoAluno" class="control-label"></label>
+                    <!-- <input asp-for="enderecoEstado" class="form-control" /> -->
+                    <select asp-for="situacaoAluno" class="form-control">
+                        <option value="">Selecione</option>
+                        <option value="1">Ativo</option>
+                        <option value="0">Inativo</option>
 
-                </select>
-                <span asp-validation-for="enderecoEstado" class="text-danger"></span>
+                    </select>
+                    <span asp-validation-for="situacaoAluno" class="text-danger"></span>
+            </div>
             </div>
 
             <div class="col-lg-2">
@@ -84,17 +135,27 @@
                     </select>
                     <span asp-validation-for="diaVencimento" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Salvar" class="btn btn-default" />
             </div>
+
+       <div class="row">
+           <div class="col-lg-12">
+               <p>
+            <div class="form-group">
+               &nbsp;&nbsp;&nbsp;&nbsp; <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-default">Cancelar</a>
+            </div>
+            </p>
+            </div>
+        </div>
         </form>
+
+        
+        
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Listagem</a>
-</div>
 
+</section>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

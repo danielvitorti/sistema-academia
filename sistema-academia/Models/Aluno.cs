@@ -58,6 +58,7 @@ namespace sistema_academia.Models
         public string enderecoEstado { get; set; }
 
         [Column("dataCadastro", TypeName = "datetime")]
+        [Display(Name = "Data de cadastro")]
         public DateTime dataCadastro {get; set;}
 
 
