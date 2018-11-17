@@ -1,10 +1,15 @@
 
 $(document).ready(function(){
 
+    $("#enderecoCep").mask('99999999');
+    
     $('#enderecoCep').blur(function() {
+        
         var cep = $(this).val();
-        if (cep.length == 9) 
+        if (cep.length == 8) 
         {
+
+            
             $.blockUI({ message: '<h1> Aguarde...</h1>' });
             $.getJSON('https://viacep.com.br/ws/' + cep + '/json/',function(data) {
                 if (data.erro == true) 
@@ -16,7 +21,7 @@ $(document).ready(function(){
                     $('#enderecoBairro').val(data.bairro);
                     $('#enderecoComplemento').val(data.complemento);
                     $('#enderecoCidade').val(data.localidade);
-                    $('#enderecoLogradouro').val(data.logradouro);
+                    $('#enderecoRua').val(data.logradouro);
                     $('#enderecoEstado').val(data.uf);
                 }
                 $.unblockUI();
