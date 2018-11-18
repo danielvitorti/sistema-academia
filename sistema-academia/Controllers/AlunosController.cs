@@ -196,7 +196,7 @@ namespace sistema_academia.Controllers
         }
 
         // POST: Alunos/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Excluir")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ExcluirConfirmed(int id)
         {
