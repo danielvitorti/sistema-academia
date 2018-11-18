@@ -1,29 +1,75 @@
-﻿@model IEnumerable<sistema_academia.Models.Treino>
+﻿@model PaginatedList<sistema_academia.Models.Treino>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "SysAcad - Treinos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<section class="content-header">
+    <h3>Treinos</h3>
+</section>
+<section class="content container-fluid">
+    
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<div class="row">
+    <div class="col-lg-12 col-xs-12 col-md-12 col-sm-12">
+        
+          <!-- Horizontal Form -->
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Pesquisar</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form class="form-horizontal">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Nome</label>
+
+                  <div class="col-sm-10">
+                    <input type="text" name="filtro" class="form-control" />
+                  </div>
+                </div>
+               
+               
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <a asp-action="Cadastrar" class="btn btn-default"><i class="fa fa-plus"></i>Cadastrar novo treino</a>
+                <button type="submit" class="btn btn-info pull-right" name="btnBuscar" id="btnBuscar" value="Buscar"><i class="fa fa-search"></i>Buscar</button>
+                <button type="submit" class="btn btn-default pull-right" name="btnLimpar" id="btnLimpar" value="Limpar"><i class="fa fa-refresh"></i>Limpar</button>
+
+              </div>
+              <!-- /.box-footer -->
+            </form>
+          
+          <!-- /.box -->
+    </div>
+</div>
+
+<section class="content">
+ <div class="row">
+        <div class="col-lg-12 col-xs-12 col-md-12 col-sm-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Alunos cadastrados</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+<table class="table table-responsive table-striped">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.nome)
+                Nome
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.objetivo)
+                Objetivo
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.observacao)
+                Observação
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.dataCadastro)
+                Data de cadastro
             </th>
             <th></th>
         </tr>
@@ -44,11 +90,44 @@
                 @Html.DisplayFor(modelItem => item.dataCadastro)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                  <a asp-action="Editar" asp-route-id="@item.id"><i class="fa fa-files-o"></i></a> |
+                <a asp-action="Detalhes" asp-route-id="@item.id"><i class="fa fa-list-alt"></i></a> |
+                <a asp-action="Excluir" asp-route-id="@item.id"><i class="fa fa-remove"></i></a>
             </td>
         </tr>
 }
+
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+
+}
+
     </tbody>
 </table>
+            </div>
+
+            <div class="box-footer clearfix">
+
+                 <a asp-action="Index"
+                    asp-route-ordem="@ViewData["ordemAtual"]"
+                    asp-route-pagina="@(Model.PageIndex - 1)"
+                    asp-route-filtroAtual="@ViewData["filtroAtual"]"
+                    class="btn btn-default @prevDisabled">
+                        <<
+                </a>
+                <a asp-action="Index"
+                asp-route-ordem="@ViewData["ordemAtual"]"
+                asp-route-pagina="@(Model.PageIndex + 1)"
+                asp-route-filtroAtual="@ViewData["filtroAtual"]"
+                class="btn btn-default @nextDisabled">
+                    >>
+                </a>
+               
+            </div>
+          </div>
+</div></div>
+</div>
+</section>
+</section>

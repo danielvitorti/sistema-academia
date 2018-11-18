@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using sistema_academia.Data;
 using sistema_academia.Models;
+using sistema_academia;
 
 namespace sistema_academia.Controllers
 {
@@ -20,13 +21,55 @@ namespace sistema_academia.Controllers
         }
 
         // GET: Treino
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string ordem, 
+            string filtroAtual,
+            string filtro, 
+            int? pagina)
         {
-            return View(await _context.Treino.ToListAsync());
+
+            
+            ViewData["NomeParam"] = String.IsNullOrEmpty(ordem) ? "nome_desc" : "";
+            ViewData["IdParam"] = ordem == "Id" ? "id_desc" : "Id";
+            ViewData["filtro"] = filtro;
+
+        
+        
+            var treinos = from trn in _context.Treino
+                         select trn;
+
+            if (!String.IsNullOrEmpty(filtro))
+            {
+                treinos = treinos.Where(s => s.nome.Contains(filtro));
+                                       
+            }
+
+
+            switch (ordem)
+            {
+                case "nome_desc":
+                    treinos = treinos.OrderByDescending(trn => trn.nome);
+                    break;
+                case "Id":
+                    treinos = treinos.OrderBy(trn => trn.id);
+                    break;
+                case "id_desc":
+                    treinos = treinos.OrderByDescending(trn => trn.id);
+                    break;
+                default:
+                    treinos = treinos.OrderBy(trn => trn.nome);
+                    break;
+            }
+
+        
+            int pageSize = 10;
+            
+            return View(await PaginatedList<Treino>.CreateAsync(treinos.AsNoTracking(), pagina ?? 1, pageSize));
+        
+
         }
 
-        // GET: Treino/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: Treino/Detalhes/5
+        public async Task<IActionResult> Detalhes(int? id)
         {
             if (id == null)
             {
@@ -43,18 +86,18 @@ namespace sistema_academia.Controllers
             return View(treino);
         }
 
-        // GET: Treino/Create
-        public IActionResult Create()
+        // GET: Treino/Cadastrar
+        public IActionResult Cadastrar()
         {
             return View();
         }
 
-        // POST: Treino/Create
+        // POST: Treino/Cadastrar
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more Detalhes see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,nome,objetivo,observacao,dataCadastro")] Treino treino)
+        public async Task<IActionResult> Cadastrar([Bind("id,nome,objetivo,observacao")] Treino treino)
         {
             if (ModelState.IsValid)
             {
@@ -65,8 +108,8 @@ namespace sistema_academia.Controllers
             return View(treino);
         }
 
-        // GET: Treino/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        // GET: Treino/Editar/5
+        public async Task<IActionResult> Editar(int? id)
         {
             if (id == null)
             {
@@ -81,12 +124,12 @@ namespace sistema_academia.Controllers
             return View(treino);
         }
 
-        // POST: Treino/Edit/5
+        // POST: Treino/Editar/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // more Detalhes see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,nome,objetivo,observacao,dataCadastro")] Treino treino)
+        public async Task<IActionResult> Editar(int id, [Bind("id,nome,objetivo,observacao")] Treino treino)
         {
             if (id != treino.id)
             {
@@ -116,8 +159,8 @@ namespace sistema_academia.Controllers
             return View(treino);
         }
 
-        // GET: Treino/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // GET: Treino/Excluir/5
+        public async Task<IActionResult> Excluir(int? id)
         {
             if (id == null)
             {
@@ -134,10 +177,10 @@ namespace sistema_academia.Controllers
             return View(treino);
         }
 
-        // POST: Treino/Delete/5
-        [HttpPost, ActionName("Delete")]
+        // POST: Treino/Excluir/5
+        [HttpPost, ActionName("Excluir")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> ExcluirConfirmed(int id)
         {
             var treino = await _context.Treino.FindAsync(id);
             _context.Treino.Remove(treino);
