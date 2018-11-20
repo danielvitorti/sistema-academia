@@ -29,4 +29,12 @@ $(document).ready(function(){
         }
     });
 
+    $(".removeAluno").click(function(){
+        
+        $("#modal-default").modal();
+        var id = $(this).attr('id');
+        $("#frmModal").attr("action","/alunos/excluir/"+id);        
+        
+    });
+
 });

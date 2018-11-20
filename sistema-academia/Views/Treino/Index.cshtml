@@ -52,7 +52,7 @@
         <div class="col-lg-12 col-xs-12 col-md-12 col-sm-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Alunos cadastrados</h3>
+              <h3 class="box-title">Treinos cadastrados</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -90,9 +90,9 @@
                 @Html.DisplayFor(modelItem => item.dataCadastro)
             </td>
             <td>
-                  <a asp-action="Editar" asp-route-id="@item.id"><i class="fa fa-files-o"></i></a> |
+                <a asp-action="Editar" asp-route-id="@item.id"><i class="fa fa-files-o"></i></a> |
                 <a asp-action="Detalhes" asp-route-id="@item.id"><i class="fa fa-list-alt"></i></a> |
-                <a asp-action="Excluir" asp-route-id="@item.id"><i class="fa fa-remove"></i></a>
+                <a style="cursor: pointer;" id="@item.id" class="remove"><i class="fa fa-remove" id="@item.id"></i></a>
             </td>
         </tr>
 }
@@ -130,4 +130,25 @@
 </div></div>
 </div>
 </section>
+
+<div class="modal fade" id="modal-default">
+    <form action="" name="frmModal" id="frmModal" method="post">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Tem certeza que deseja realizar a exclusão?</h4>
+              </div>
+              
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                <button type="submit" class="btn btn-danger">Excluir</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+    </form>
 </section>
