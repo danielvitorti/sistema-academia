@@ -47,6 +47,8 @@
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
    <link rel="stylesheet" href="~/lib/jquery-ui-1.12.1.custom/jquery-ui.min.css" />
+
+   <link rel="stylesheet" href="~/css/select2/select2.min.css" />
         
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -290,8 +292,8 @@
 
           </a>
           <ul class="treeview-menu">
-            <li><a href="~/pagamento/lancamentos"><i class="fa fa-usd"></i>Lançamentos</a></li>
-            <li><a href="~/pagamento/listagem"><i class="fa fa-plus-square"></i>Listagem</a></li>
+            <li><a href="~/pagamentoaluno/cadastrar"><i class="fa fa-usd"></i>Lançamentos</a></li>
+            <li><a href="~/pagamentoaluno/"><i class="fa fa-plus-square"></i>Listagem</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -302,20 +304,23 @@
 
           </a>
           <ul class="treeview-menu">
-            <li><a href="~/Plano"><i class="fa fa-list"></i>Listagem</a></li>
-            <li><a href="~/Plano/Cadastrar"><i class="fa fa-plus-square"></i>Cadastrar</a></li>
+            <li><a href="~/plano"><i class="fa fa-list"></i>Listagem</a></li>
+            <li><a href="~/plano/cadastrar"><i class="fa fa-plus-square"></i>Cadastrar</a></li>
           </ul>
         </li>
 
 
         <li class="treeview">
-          <a href="#"><i class="fa fa-files-o"></i> <span>Treinamentos</span>
+          <a href="#"><i class="fa fa-files-o"></i> <span>Treinos</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-gears"></i>Controlar</a></li>
+            <li><a href="~/treinos"><i class="fa fa-gears"></i>Controlar</a></li>
+          </ul>
+          <ul class="treeview-menu">
+            <li><a href=""><i class="fa fa-gears"></i>Exercicios</a></li>
           </ul>
         </li>
 
@@ -490,6 +495,9 @@
     <script src="~/js/Aluno/Aluno.js" type="text/javascript" language="javascript"></script>
     <script src="~/js/Treino/Treino.js" type="text/javascript" language="javascript"></script>
     <script src="~/js/Plano/Plano.js" type="text/javascript" language="javascript"></script>
+    <script src="~/js/PagamentoAluno/PagamentoAluno.js" type="text/javascript" language="javascript"></script>
+    <script src="~/js/select2/select2.full.js" type="text/javascript" language="javascript"></script>
+    <script src="~/js/select2/i18n/pt-BR.js" type="text/javascript" language="javascript"></script>
 
 </body>
 </html>

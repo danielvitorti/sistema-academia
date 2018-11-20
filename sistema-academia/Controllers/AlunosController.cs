@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using sistema_academia.Data;
 using sistema_academia.Models;
 using sistema_academia;
+using System.Collections;
 
 namespace sistema_academia.Controllers
 {
@@ -212,9 +213,40 @@ namespace sistema_academia.Controllers
         }
 
 
-        public ActionResult ListaAlunosJson(){
+        public ActionResult ListaAlunosJson(string q)
+        {
 
-            return Json(_context.Aluno.ToList());
+            Dictionary<string,dynamic> result = new Dictionary<string,dynamic>();
+            Dictionary<string,dynamic> resultAlunos = new Dictionary<string,dynamic>();
+
+            var alunos = from aln in _context.Aluno
+                         select aln;
+
+
+            if (!String.IsNullOrEmpty(q))
+            {
+                alunos = alunos.Where(s => s.nome.Contains(q));
+                                       
+            }
+
+
+            foreach( var aluno in alunos)
+            {
+                resultAlunos["id"] = aluno.id;
+                resultAlunos["name"] = aluno.nome;
+            }
+
+
+            ArrayList resultArrAlunos = new ArrayList();
+
+            resultArrAlunos.Add(resultAlunos);
+            
+            result.Add("total_count",alunos.Count());
+            result.Add("incomplete_results",false);
+            result.Add("items",resultArrAlunos);
+
+            return Json(result);
+
         }
     }
 }

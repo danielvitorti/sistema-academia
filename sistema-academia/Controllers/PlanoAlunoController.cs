@@ -151,5 +151,21 @@ namespace sistema_academia.Controllers
         {
             return _context.PlanoAluno.Any(e => e.id == id);
         }
+
+        
+        public ActionResult ListaPlanoJsonPorId(string id)
+        {
+
+            var planos = _context.PlanoAluno
+                         .Include(planoAluno => planoAluno.Plano)                       
+                         .Where(s => s.Aluno.id == Convert.ToInt32(id))
+                         .ToList();
+
+            this.HttpContext.Response.StatusCode = 200;                                                                                 
+
+            return Json(planos);
+
+        }
+
     }
 }

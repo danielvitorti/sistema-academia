@@ -190,27 +190,47 @@ namespace sistema_academia.Controllers
         {
             return _context.Plano.Any(e => e.id == id);
         }
-
-
-        public ActionResult ListaPlanosJson()
+        
+        
+        public ActionResult BuscaPlanoJsonPorId(string id)
         {
-            
 
-            Dictionary<string, string> listaNova = new Dictionary<string, string>();
+            var plano = _context.Plano.Find(Convert.ToInt32(id));
 
-            foreach(var lista in _context.Plano.ToList())
+            return Json(plano);
+
+        }
+
+        public ActionResult ListaPlanosJson(string q)
+        {
+
+            Dictionary<dynamic,dynamic> result = new Dictionary<dynamic,dynamic>();
+            Dictionary<dynamic,dynamic> resultPlanos = new Dictionary<dynamic,dynamic>();
+            ArrayList resultArrPlanos = new ArrayList();                
+
+            var planos = from pln in _context.Plano
+                         select pln;
+
+
+            if (!String.IsNullOrEmpty(q))
             {
-
-                listaNova.Add("id",lista.id.ToString());
-                listaNova.Add("text",lista.nome);
-
+                planos = planos.Where(s => s.nome.Contains(q));
+                                       
             }
 
-            ArrayList arrayList = new ArrayList();
-            arrayList.Add(listaNova);
+            foreach( var plano in planos)
+            {
+                resultPlanos["id"] = plano.id;
+                resultPlanos["name"] = plano.nome;
+            }
 
+            resultArrPlanos.Add(resultPlanos);
             
-            return Json(arrayList);
+            result.Add("total_count",planos.Count());
+            result.Add("incomplete_results",false);
+            result.Add("items",resultArrPlanos);
+
+            return Json(result);
 
         }
 

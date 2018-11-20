@@ -5,11 +5,62 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<section class="content-header">
+    <h3>Pagamentos lançados</h3>
+</section>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<section class="content container-fluid">
+
+    <div class="row">
+    <div class="col-lg-12 col-xs-12 col-md-12 col-sm-12">
+        
+          <!-- Horizontal Form -->
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Pesquisar</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form class="form-horizontal">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">Período</label>
+
+                  <div class="col-sm-12 col-xs-12 col-lg-4 col-md-4">
+                    <input type="text" name="periodoInicial" id="periodoInicial" autocomplete="off" class="form-control date" />
+                  </div>
+
+                  <div class="col-sm-12 col-xs-12 col-lg-4 col-md-4">
+                    <input type="text" name="periodoFinal" id="periodoFinal" autocomplete="off" class="form-control date" />
+                  </div>
+                </div>
+               
+               
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <a asp-action="Cadastrar" class="btn btn-default"><i class="fa fa-edit"></i>Cadastrar novo plano</a>
+                <button type="submit" class="btn btn-info pull-right" name="btnBuscar" id="btnBuscar" value="Buscar"><i class="fa fa-search"></i>Buscar</button>
+                <a asp-action="Index" class="btn btn-default pull-right"><i class="fa fa-refresh"></i>Limpar</a>
+              </div>
+              <!-- /.box-footer -->
+            </form>
+          
+          <!-- /.box -->
+    </div>
+</div>
+
+
+<section class="content">
+ <div class="row">
+        <div class="col-lg-12 col-xs-12 col-md-12 col-sm-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Pagamentos lançados</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+
 <table class="table">
     <thead>
         <tr>
@@ -37,12 +88,40 @@
             <td>
                 @Html.DisplayFor(modelItem => item.tipoPagamento)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+            <td>                
+                <a asp-action="Details" asp-route-id="@item.id">Details</a> |                
+                <a style="cursor: pointer;" id="@item.id" class="removePagamento"><i class="fa fa-remove" id="@item.id"></i></a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="modal fade" id="modal-default">
+    <form action="" name="frmModal" id="frmModal" method="post">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Tem certeza que deseja realizar a exclusão?</h4>
+              </div>
+              
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                <button type="submit" class="btn btn-danger">Excluir</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+    </div>
+    </form>
+
+</section>
