@@ -20,9 +20,64 @@ namespace sistema_academia.Controllers
         }
 
         // GET: PlanoAluno
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string ordem, 
+            string filtroAtual,
+            string filtro, 
+            int? pagina)
         {
-            return View(await _context.PlanoAluno.ToListAsync());
+
+
+            ViewData["NomeParam"] = String.IsNullOrEmpty(ordem) ? "nome_desc" : "";
+            ViewData["IdParam"] = ordem == "Id" ? "id_desc" : "Id";
+            ViewData["filtro"] = filtro;
+
+
+            var planosAlunos = from plnAln in _context.PlanoAluno
+                               join plano in _context.Plano on plnAln.Plano.id equals plano.id  
+                               join aluno in _context.Aluno on plnAln.Aluno.id equals aluno.id
+                         select plnAln;
+
+
+            /* 
+                var dealercontacts = from contact in DealerContact
+                     join dealer in Dealer on contact.DealerId equals dealer.ID
+                     select contact;
+            */                         
+
+            if (!String.IsNullOrEmpty(filtro))
+            {
+                planosAlunos = planosAlunos.Where(s => s.nome.Contains(filtro));
+                                       
+            }
+
+
+            switch (ordem)
+            {
+                case "nome_desc":
+                    planosAlunos = planosAlunos.OrderByDescending(plnAln => plnAln.nome);
+                    break;
+                case "Id":
+                    planosAlunos = planosAlunos.OrderBy(plnAln => plnAln.id);
+                    break;
+                case "id_desc":
+                    planosAlunos = planosAlunos.OrderByDescending(plnAln => plnAln.id);
+                    break;
+                default:
+                    planosAlunos = planosAlunos.OrderBy(plnAln => plnAln.nome);
+                    break;
+            }
+
+        
+                int pageSize = 10;
+                return View(await PaginatedList<PlanoAluno>.CreateAsync(planosAlunos.AsNoTracking(), pagina ?? 1, pageSize));
+        
+
+            
+
+
+
+
+            
         }
 
         // GET: PlanoAluno/Details/5
