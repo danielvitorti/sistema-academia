@@ -76,7 +76,15 @@
                 @Html.DisplayFor(modelItem => item.nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.situacaoAluno)
+
+                @if(item.situacaoAluno == "1")
+                {
+                    @Html.Raw("<span class='label label-success'>Ativo</span>")
+                    
+                }else if(item.situacaoAluno == "0") 
+                {
+                    @Html.Raw("<span class='label label-danger'>Inativo<span>")
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.diaVencimento)

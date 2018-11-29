@@ -7,7 +7,7 @@ $(document).ready(function(){
   
   $(".date").datepicker({
     dateFormat: 'dd/mm/yy',
-    dayNames: ['Domingo','Segunda','TerÃ§a','Quarta','Quinta','Sexta','SÃ¡bado','Domingo'],
+    dayNames: ['Domingo','Segunda','Terca','Quarta','Quinta','Sexta','Sabado','Domingo'],
     dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
     dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','SÃ¡b','Dom'],
     monthNames: ['Janeiro','Fevereiro','MarÃ§o','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
