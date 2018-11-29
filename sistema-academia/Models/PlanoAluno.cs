@@ -22,6 +22,12 @@ namespace sistema_academia.Models
         [Column("dataCadastro", TypeName = "datetime")]
         public DateTime dataCadastro {get; set;}
 
+
+        public PlanoAluno()
+        {
+            this.dataCadastro = System.DateTime.Now;
+        }
+
         
     }
 
